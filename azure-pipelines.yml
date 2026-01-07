@@ -1,0 +1,24 @@
+trigger:
+  branches:
+    include:
+      - feature/testing-py-test-for-local-mcp
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+    addToPath: true
+  displayName: 'Use Python 3.x'
+
+- script: |
+    python -m pip install --upgrade pip
+    pip install pytest
+  displayName: 'Install dependencies'
+
+- script: |
+    pytest test.py -v
+  displayName: 'Run pytest'
+  continueOnError: false
