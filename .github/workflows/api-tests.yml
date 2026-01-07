@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - feature/testing-py-test-for-local-mcp
+      - main
 
 jobs:
   test:
