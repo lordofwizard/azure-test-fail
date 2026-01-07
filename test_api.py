@@ -120,12 +120,12 @@ def test_delete_nonexistent_item():
 
 
 def test_create_user_invalid_age():
-    # This test will fail - trying to create user with string age instead of int
+    # Test validation error when sending string age instead of int
     response = client.post(
         "/users",
         json={"name": "Test User", "email": "test@example.com", "age": "thirty"}
     )
-    assert response.status_code == 200  # This will fail - should be 422 for validation error
+    assert response.status_code == 422  # Fixed: Expect 422 for validation error
 
 
 def test_multiple_items_creation():

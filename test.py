@@ -177,7 +177,7 @@ def test_count_vowels_uppercase():
     assert count_vowels("HELLO") == 2
 
 
-# This test will fail with a TypeError - comparing float result with integer
+# Test division with float result - using pytest.approx for tolerance
 def test_divide_type_error():
     result = divide(10, 3)
-    assert result == 3  # This will cause TypeError in comparison (float vs int)
+    assert result == pytest.approx(3.333, rel=1e-2)  # Fixed: Use pytest.approx for float comparison
